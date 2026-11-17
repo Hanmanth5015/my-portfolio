@@ -1,6 +1,7 @@
 /* ==========================================================================
    Hanmanth Poojary - Personal Portfolio Stylesheet
-   Modern Dark Theme | Newton School of Technology
+   Modern Dark Theme | Newton School of Technology (NST)
+   Pure HTML & CSS (No JavaScript)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -20,6 +21,7 @@
   --accent-indigo: #6366f1;
   --accent-violet: #a855f7;
   --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
   --gradient-primary: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
   --gradient-glow: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
 
@@ -128,7 +130,7 @@ img, svg {
 
 .section-header {
   text-align: center;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto 60px;
 }
 
@@ -156,7 +158,8 @@ img, svg {
 
 .section-subtitle {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .gradient-text {
@@ -232,23 +235,18 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   4. Sticky Navigation Bar
+   4. Sticky Navigation Bar (Pure CSS)
    -------------------------------------------------------------------------- */
 .navbar {
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(10, 14, 23, 0.8);
+  background: rgba(10, 14, 23, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
   z-index: 1000;
-  transition: all var(--transition-fast);
-}
-
-.navbar.scrolled {
-  background: rgba(10, 14, 23, 0.95);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
@@ -287,29 +285,29 @@ img, svg {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--text-secondary);
   position: relative;
   padding: 4px 0;
+  transition: color var(--transition-fast);
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
   color: var(--text-primary);
 }
 
-.nav-link.active::after {
+.nav-link:hover::after {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -320,7 +318,11 @@ img, svg {
   border-radius: 2px;
 }
 
-/* Mobile Toggle Hamburger */
+/* Pure CSS Mobile Navigation Toggle */
+.nav-toggle-checkbox {
+  display: none;
+}
+
 .mobile-toggle {
   display: none;
   background: transparent;
@@ -408,7 +410,7 @@ img, svg {
 }
 
 .hero-description {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 32px;
@@ -425,6 +427,7 @@ img, svg {
   align-items: center;
   gap: 16px;
   margin-bottom: 36px;
+  flex-wrap: wrap;
 }
 
 .hero-socials {
@@ -768,7 +771,9 @@ img, svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .badge-pill {
@@ -778,7 +783,7 @@ img, svg {
   letter-spacing: 1px;
   color: var(--accent-emerald);
   background: rgba(16, 185, 129, 0.1);
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
   border: 1px solid rgba(16, 185, 129, 0.25);
 }
@@ -786,52 +791,120 @@ img, svg {
 .timeline-date {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--accent-cyan);
+  font-weight: 600;
 }
 
 .timeline-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.timeline-degree {
-  font-size: 1.05rem;
-  color: var(--accent-cyan);
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-
-.timeline-desc {
-  color: var(--text-secondary);
-  font-size: 0.98rem;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.timeline-bullets {
-  list-style: none;
-}
-
-.timeline-bullets li {
-  position: relative;
-  padding-left: 20px;
   margin-bottom: 8px;
-  font-size: 0.92rem;
+}
+
+.education-details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.education-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+}
+
+.education-field strong {
+  color: var(--text-primary);
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.education-field span {
   color: #cbd5e1;
 }
 
-.timeline-bullets li::before {
-  content: '▹';
-  position: absolute;
-  left: 0;
+/* --------------------------------------------------------------------------
+   8. My Learning Journey Section
+   -------------------------------------------------------------------------- */
+.journey-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.journey-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.journey-step-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 28px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.journey-step-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateX(6px);
+}
+
+.journey-step-num {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
   color: var(--accent-cyan);
-  font-size: 1.1rem;
-  line-height: 1.2;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.journey-step-content {
+  flex: 1;
+}
+
+.journey-step-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.journey-step-icon {
+  color: var(--accent-emerald);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 50%;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 /* --------------------------------------------------------------------------
-   8. Skills Section
+   9. Skills & Technologies Section
    -------------------------------------------------------------------------- */
 .skills-grid {
   display: grid;
@@ -864,215 +937,92 @@ img, svg {
 .skills-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
-.skill-info {
+.skill-row {
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.skill-level {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.progress-track {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
-  transition: width 1s ease-in-out;
-}
-
-/* --------------------------------------------------------------------------
-   9. Projects Section
-   -------------------------------------------------------------------------- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 32px;
-}
-
-.project-card {
-  padding: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-preview {
-  background: #060911;
-  padding: 24px;
-  border-bottom: 1px solid var(--border-subtle);
-  position: relative;
-  min-height: 170px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.project-preview-mockup {
-  width: 90%;
-  background: #111827;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  transition: all var(--transition-fast);
 }
 
-.mockup-header {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 12px;
+.skill-row:hover {
+  background: rgba(56, 189, 248, 0.06);
+  border-color: rgba(56, 189, 248, 0.3);
 }
 
-.mockup-body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.mockup-line {
-  height: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 4px;
-}
-
-.title-line {
-  width: 50%;
-  background: rgba(56, 189, 248, 0.3);
-}
-
-.short-line {
-  width: 70%;
-}
-
-.project-category-tag {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  font-size: 0.75rem;
+.skill-name {
   font-weight: 600;
-  padding: 3px 10px;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  color: var(--accent-cyan);
+  font-size: 0.95rem;
+  color: var(--text-primary);
 }
 
-.project-content {
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.project-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
-}
-
-.project-desc {
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  flex: 1;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.tag {
-  font-size: 0.75rem;
+.skill-status-badge {
+  font-size: 0.78rem;
   font-family: var(--font-mono);
-  font-weight: 500;
-  padding: 3px 9px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: #cbd5e1;
-}
-
-.project-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.project-link:hover {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(56, 189, 248, 0.12);
   color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.25);
 }
 
-/* --------------------------------------------------------------------------
-   10. Contact Section
-   -------------------------------------------------------------------------- */
-.contact-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 40px;
-  align-items: start;
+.skill-status-badge.status-learning {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  border-color: rgba(56, 189, 248, 0.3);
 }
 
-.contact-info h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+.skill-status-badge.status-beginner {
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--accent-violet);
+  border-color: rgba(168, 85, 247, 0.3);
 }
 
-.contact-info p {
-  color: var(--text-secondary);
-  margin-bottom: 28px;
-  line-height: 1.7;
+.skill-status-badge.status-basic {
+  background: rgba(99, 102, 241, 0.12);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.3);
 }
 
-.contact-methods {
+/* Tools Grid */
+.tools-badge-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 32px;
+  gap: 12px;
 }
 
-.contact-method-item {
+.tool-chip-item {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  transition: all var(--transition-fast);
 }
 
-.method-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+.tool-chip-item:hover {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.35);
+  transform: translateX(4px);
+}
+
+.tool-icon-frame {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1080,90 +1030,147 @@ img, svg {
   flex-shrink: 0;
 }
 
-.method-title {
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: block;
-}
-
-.method-value {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.contact-social-row {
+/* Core Skills */
+.core-skills-grid {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  flex-wrap: wrap;
 }
 
-.social-btn {
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  transition: all var(--transition-fast);
-}
-
-.social-btn:hover {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: rgba(56, 189, 248, 0.4);
-  color: var(--accent-cyan);
-}
-
-/* Contact Form */
-.contact-form {
+.core-skill-row {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #cbd5e1;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 16px;
-  background: rgba(10, 14, 23, 0.8);
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-family: inherit;
+  font-weight: 600;
   font-size: 0.95rem;
+  color: #cbd5e1;
   transition: all var(--transition-fast);
-  outline: none;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-  background: rgba(15, 23, 42, 0.9);
+.core-skill-row:hover {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.35);
+  transform: translateX(4px);
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: var(--text-muted);
+.core-skill-bullet {
+  color: var(--accent-emerald);
+  font-weight: 800;
+  font-size: 1.1rem;
 }
 
 /* --------------------------------------------------------------------------
-   11. Footer
+   10. Contact Section (Redesigned)
+   -------------------------------------------------------------------------- */
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.contact-channel-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.contact-channel-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.contact-channel-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  margin-bottom: 18px;
+  transition: all var(--transition-fast);
+}
+
+.contact-channel-card:hover .contact-channel-icon {
+  background: rgba(56, 189, 248, 0.2);
+  transform: scale(1.08);
+}
+
+.contact-channel-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.contact-channel-value {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  word-break: break-all;
+}
+
+.contact-channel-btn {
+  margin-top: auto;
+  font-size: 0.85rem;
+  padding: 8px 18px;
+  width: 100%;
+}
+
+/* Contact Message Card */
+.contact-direct-card {
+  padding: 36px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.contact-direct-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.contact-direct-card p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 640px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+
+.contact-action-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   12. Footer
    -------------------------------------------------------------------------- */
 .footer {
   background: #05080e;
@@ -1235,7 +1242,7 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   12. Responsive Media Queries
+   13. Responsive Media Queries
    -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
   .hero-container {
@@ -1253,8 +1260,11 @@ img, svg {
     margin-right: auto;
   }
 
-  .about-grid,
-  .contact-wrapper {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-channels-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1282,7 +1292,7 @@ img, svg {
 
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: 68px;
     left: 0;
     width: 100%;
     background: rgba(10, 14, 23, 0.98);
@@ -1293,9 +1303,11 @@ img, svg {
     gap: 24px;
     transform: translateY(-150%);
     transition: transform var(--transition-normal);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   }
 
-  .nav-menu.open {
+  /* Pure CSS Checkbox Toggle */
+  .nav-toggle-checkbox:checked ~ .nav-menu {
     transform: translateY(0);
   }
 
@@ -1312,6 +1324,20 @@ img, svg {
 
   .timeline-item {
     flex-direction: column;
+    gap: 16px;
+  }
+
+  .education-field {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .education-field strong {
+    min-width: unset;
+  }
+
+  .journey-step-card {
+    padding: 18px 20px;
     gap: 16px;
   }
 
